@@ -1,0 +1,46 @@
+.grid-20.grid-parent
+  .margins.rounded-box.text-on-blue
+    .sidebar-heading.sidebar-heading-skin.dark-blue-bg Your Todos
+      div(ng-controller="TodoListCtrl")
+        a.sidebar-item-borders.sidebar-item.dark-blue-bg(ng-repeat="todo in getTodos()",
+          ng-click="select(todo)",
+          ng-class="getCssClass(todo)")
+          span(ng-bind="todo.title")
+
+
+.grid-80.grid-parent(ng-controller="EditTodoCtrl")
+  form(novalidate, role="form")
+
+    .margins.padding.rounded-box.dark-blue-bg.text-on-blue
+      div(ng-show="!editMode")
+        span.current-item(ng-bind="todo.title")
+      
+      .current-item.current-item-edit(ng-show="editMode")
+        input(type="text", ng-model="todo.title")
+          
+        
+
+    .margins.padding.rounded-box.medium-blue-bg.text-on-blue
+      span Due:
+      | {{ todo.due | date : 'short' }}
+    
+
+    .margins.padding.rounded-box.todo-text(ng-show="!editMode")
+      
+      span(ng-bind="todo.text")
+    
+    div(ng-show="editMode")
+      textarea.margins.padding.todo-text.todo-text-edit(ng-model="todo.text")
+    
+
+    div(ng-show="!editMode")
+      span.span-save
+        button.btn(ng-click="edit()") Edit
+        button.btn(ng-click="create()") New
+        button.btn(ng-click="remove()") Delete
+
+    div(ng-show="editMode")
+      span.span-save
+        button.btn( ng-click="cancel()") Cancel
+        button.btn( ng-click="save()") Save
+      

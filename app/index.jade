@@ -1,0 +1,29 @@
+doctype html
+html(lang="en")
+
+head
+  title= title
+  meta(http-equiv="Content-Type" content="text/html; charset=UTF-8")
+  meta(charset="utf-8")
+  meta(name="viewport", content="width=device-width, initial-scale=1")
+
+  //link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css")
+
+  // if lt IE 9
+    script(src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
+    script(src='https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js')
+
+  link(rel='stylesheet', href='/assets/app.css')
+
+
+body
+  .content.grid-container(ng-app="todoApp")
+
+    div(ng-view)
+    div.footer(ng-controller="FooterCtrl") Angular &amp; Browserify Example, Version: {{version}} 
+    a(href="#/imprint")[Imprint]
+
+  //scripts
+  script(src="bundle.js")
+
+
