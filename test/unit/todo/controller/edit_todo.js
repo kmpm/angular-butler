@@ -7,7 +7,7 @@ var chai = require('chai')
 
 chai.use(sinonChai);
 
-var EditTodoCtrlModule = require('../../../app/controller/edit_todo.js');
+var EditTodoCtrlModule = require('../../../../app/components/todo/controller/edit_todo.js');
 
 describe('The EditTodoCtrl\'s', function() {
 

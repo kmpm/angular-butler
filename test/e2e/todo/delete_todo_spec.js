@@ -10,9 +10,7 @@ describe('The todo app (deleting a todo)', function() {
   beforeEach(function() {
     todoPage = new TodoPage();
     todoPage.open();
-    ptor = protractor.getInstance();
-    // see comment in test/e2e/list_todo_spec.js
-    ptor.ignoreSynchronization = true;
+
   });
 
   it('should delete a todo', function() {

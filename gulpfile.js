@@ -88,9 +88,9 @@ function bundle(bundler) {
       .on('error', gutil.log.bind(gutil, 'Browserify Error'))
       .pipe(source('bundle.js'))
       // optional, remove if you dont want sourcemaps
-        // .pipe(buffer())
-        // .pipe(sourcemaps.init({loadMaps: true})) // loads map from browserify file
-        // .pipe(sourcemaps.write('./')) // writes .map file
+        .pipe(buffer())
+        .pipe(sourcemaps.init({loadMaps: true})) // loads map from browserify file
+        .pipe(sourcemaps.write('./')) // writes .map file
       //
       .pipe(gulp.dest('./dist'));
   };
@@ -118,27 +118,6 @@ gulp.task('browserify-tests', function() {
   .pipe(source('browserified_tests.js'))
   .pipe(gulp.dest('./test/browserified'));
 });
-
-
-
-
-// gulp.task('ngmin', ['lint', 'unit'], function() {
-//   return gulp.src([
-//     'app/js/**/*.js',
-//     '!app/js/third-party/**',
-//   ])
-//   .pipe(ngmin())
-//   .pipe(gulp.dest('./app/ngmin'));
-// });
-
-// gulp.task('browserify-min', ['ngmin'], function() {
-//   return browserify('./app/ngmin/app.js')
-//   .bundle()
-//   .pipe(source('app.min.js'))
-//   .pipe(streamify(uglify({ mangle: false })))
-//   .pipe(gulp.dest('./app/dist/'));
-// });
-
 
 
 gulp.task('less', function () {
@@ -194,6 +173,9 @@ gulp.task('e2e', ['server'], function() {
   .on('error', function(e) { throw e; })
   .on('end', function() {
     connect.serverClose();
+    setTimeout(function () {
+      throw new Error('workaround for not ending');
+    },2000);
   });
 });
 
@@ -217,5 +199,5 @@ gulp.task('dist', ['browserify', 'templates', 'less'], function () {
 
 gulp.task('default', ['clean'], function() {
   liveReload = false;
-  gulp.start('karma', 'less', 'browserify', 'browserify-min', 'e2e');
+  gulp.start('karma', 'less', 'browserify', 'e2e');
 });

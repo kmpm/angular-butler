@@ -10,9 +10,7 @@ describe('The todo app (creating a new todo)', function() {
   beforeEach(function() {
     todoPage = new TodoPage();
     todoPage.open();
-    ptor = protractor.getInstance();
-    // see comment in test/e2e/list_todo_spec.js
-    ptor.ignoreSynchronization = true;
+
   });
 
   it('should switch to edit-mode when creating a new todo', function() {

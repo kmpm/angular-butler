@@ -3,7 +3,7 @@
 var chai = require('chai')
   , expect = chai.expect;
 
-var ImprintServiceModule = require('../../../app/service/imprint.js');
+var ImprintServiceModule = require('../../../../app/shared/service/imprint.js');
 
 describe('The ImprintService', function() {
 

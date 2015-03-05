@@ -3,7 +3,7 @@
 var chai = require('chai')
   , expect = chai.expect;
 
-var TodoServiceModule = require('../../../app/service/todos.js');
+var TodoServiceModule = require('../../../../app/components/todo/service/todos.js');
 
 describe('The TodoService', function() {
 

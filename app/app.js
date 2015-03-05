@@ -7,24 +7,24 @@ require('jquery');
 var angular = require('angular');
 require('angular-route');
 
-var app = angular.module('todoApp', [ 'ngRoute' ]);
+var app = angular.module('app', [ 'ngRoute', 'app.Todo']);
 
 app.constant('VERSION', require('../package.json').version);
 
-require('./service');
-require('./controller');
+require('./shared');
+require('./components');
 
 app.config(function($routeProvider) {
 
-  $routeProvider.when('/todos', {
-    templateUrl: 'views/todos.html',
-    controller: 'TodoCtrl',
+  $routeProvider.when('/', {
+    templateUrl: 'shared/views/home.html',
+    controller: 'HomeCtrl'
   })
   .when('/imprint', {
-    templateUrl: 'views/imprint.html',
+    templateUrl: 'shared/views/imprint.html',
     controller: 'ImprintCtrl',
   })
   .otherwise({
-    redirectTo: '/todos',
+    redirectTo: '/'
   });
 });

@@ -10,9 +10,7 @@ describe('The todo app', function() {
   beforeEach(function() {
     todoPage = new TodoPage();
     todoPage.open();
-    ptor = protractor.getInstance();
-    // see comment in test/e2e/list_todo_spec.js
-    ptor.ignoreSynchronization = true;
+
   });
 
   it('should select a different todo from the sidebar', function() {
